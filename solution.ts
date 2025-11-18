@@ -58,3 +58,29 @@ const printBookDetails = (book: Book) => {
     }, Available: ${book.isAvailable ? "Yes" : "No"}`
   );
 };
+
+const getUniqueValues = (
+  arr1: (string | number)[],
+  arr2: (string | number)[]
+): (string | number)[] => {
+  const mixedArray: (string | number)[] = [...arr1, ...arr2];
+  const uniqueArray: (string | number)[] = [];
+
+  for (let i = 0; i < mixedArray.length; i++) {
+    let isUnique: boolean = true;
+
+    for (let j = 0; j < uniqueArray.length; j++) {
+      if (mixedArray[i] === uniqueArray[j]) {
+        isUnique = false;
+        break;
+      }
+    }
+
+    if (isUnique) uniqueArray[uniqueArray.length] = mixedArray[i];
+  }
+
+  return uniqueArray;
+};
+
+const array1 = [1, 2, 3, 4, 5];
+const array2 = [3, 4, 5, 6, 7];
