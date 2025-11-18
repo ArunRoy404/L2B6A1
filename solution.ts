@@ -7,15 +7,11 @@ const formatValue = (
   return value;
 };
 
-
-
 const getLength = (value: string | any[]): number => {
   if (typeof value === "string") return value.length;
   if (Array.isArray(value)) return value.length;
   return 0;
 };
-
-
 
 class Person {
   name: string;
@@ -30,3 +26,9 @@ class Person {
     return `'Name: ${this.name}, Age: ${this.age}'`;
   }
 }
+
+const filterByRating = (
+  books: { title: string; rating: number }[]
+): { title: string; rating: number }[] => {
+  return books.filter((book) => book.rating >= 4);
+};
