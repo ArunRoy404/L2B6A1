@@ -32,3 +32,16 @@ const filterByRating = (
 ): { title: string; rating: number }[] => {
   return books.filter((book) => book.rating >= 4);
 };
+
+const filterActiveUsers = (
+  users: { id: number; name: string; email: string; isActive: boolean }[]
+): { id: number; name: string; email: string; isActive: boolean }[] => {
+  return users.filter((user) => {
+    if (typeof user.isActive !== "boolean") {
+      throw new Error("isActive must be a boolean");
+    }
+    return user.isActive;
+  });
+};
+
+
