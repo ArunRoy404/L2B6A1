@@ -7,11 +7,17 @@ const formatValue = (
   return value;
 };
 
+
+
+
 const getLength = (value: string | any[]): number => {
   if (typeof value === "string") return value.length;
   if (Array.isArray(value)) return value.length;
   return 0;
 };
+
+
+
 
 class Person {
   name: string;
@@ -27,11 +33,17 @@ class Person {
   }
 }
 
+
+
+
 const filterByRating = (
   books: { title: string; rating: number }[]
 ): { title: string; rating: number }[] => {
   return books.filter((book) => book.rating >= 4);
 };
+
+
+
 
 type userType = {
   id: number;
@@ -48,6 +60,9 @@ const filterActiveUsers = (users: userType[]): userType[] => {
   });
 };
 
+
+
+
 interface Book {
   title: string;
   author: string;
@@ -62,6 +77,9 @@ const printBookDetails = (book: Book) => {
     }, Available: ${book.isAvailable ? "Yes" : "No"}`
   );
 };
+
+
+
 
 type arrayType = (string | number)[];
 const getUniqueValues = (array1: arrayType, array2: arrayType): arrayType => {
@@ -85,4 +103,31 @@ const getUniqueValues = (array1: arrayType, array2: arrayType): arrayType => {
   findUnique(array2);
 
   return uniqueArray;
+};
+
+
+
+
+type productType = {
+  name: string;
+  price: number;
+  quantity: number;
+  discount?: number;
+};
+
+const calculateTotalPrice = (products: productType[]): number => {
+  if (products.length === 0) return 0;
+  const totalPrice = products.reduce((acc, product) => {
+    const productPrice = product.quantity * product.price;
+    if (product.discount === undefined) return acc + productPrice;
+
+    if (product.discount < 0 || product.discount > 100)
+      throw new Error("Discount must be between 0 and 100");
+
+    const discountedProductPrice =
+      productPrice - productPrice * (product.discount / 100);
+    return acc + discountedProductPrice;
+  }, 0);
+
+  return totalPrice;
 };
