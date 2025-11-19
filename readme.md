@@ -22,6 +22,8 @@
 
     if (typeof value === "string") console.log(value.toUpperCase());
    ``` 
+
+
 * never টাইপ এর অর্থ হলো যেই টাইপ এর ভ্যালু কখনোই আসবে না। যখন কোনো ফাঙ্কশন কোনো ভ্যারিয়েবল অথবা কোনো ভ্যালু রিটার্ন করে না, তখন সেই ফাঙ্কশন এর রিটার্ন টাইপ নেভার দেয়া যায়, 
 
 উদাহরণ:
@@ -30,3 +32,50 @@
         console.log(value.toUpperCase())
     }
    ``` 
+
+
+   ---
+   ---
+
+
+
+
+## Question 5: Provide an example of using union and intersection types in TypeScript.
+## Answer: 
+
+* union টাইপ এর মাদ্ধমে আমরা একটি ভ্যারিয়েবল এ একাধিক টাইপ যোগ করতে পারি। union এর ফলে আমাদের ভ্যারিয়েবল দেয়া টাইপ এর মধ্যে যেকোনো টাইপ এর হলেই হবে ।
+  
+উদাহরণ:
+   ```bash
+    let value: string | number;
+
+    value = "arun"
+    value = 100
+
+    value = true; // Error
+   ``` 
+
+
+* intersection এর ফলে একটি ভ্যারিয়েবল এ যতগুলো টাইপ দিতে হবে, সবগুলো টাইপ ই ওই ভ্যারিয়েবল এর মধ্যে থাকতে হবে ।  কোনো টাইপ বাদ পড়া যাবে না । 
+  
+উদাহরণ:
+   ```bash
+     type nameType = {
+      name: string;
+    };
+    
+    type ageType = {
+      age: number;
+    };
+    
+    type personType = nameType & ageType;
+    
+    const person: personType = {
+      name: "Arun",
+      age: 23
+    };
+
+    console.log(person);
+   ``` 
+
+--- 
