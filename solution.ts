@@ -33,9 +33,13 @@ const filterByRating = (
   return books.filter((book) => book.rating >= 4);
 };
 
-const filterActiveUsers = (
-  users: { id: number; name: string; email: string; isActive: boolean }[]
-): { id: number; name: string; email: string; isActive: boolean }[] => {
+type userType = {
+  id: number;
+  name: string;
+  email: string;
+  isActive: boolean;
+};
+const filterActiveUsers = (users: userType[]): userType[] => {
   return users.filter((user) => {
     if (typeof user.isActive !== "boolean") {
       throw new Error("isActive must be a boolean");
@@ -59,11 +63,8 @@ const printBookDetails = (book: Book) => {
   );
 };
 
-
-
 type arrayType = (string | number)[];
 const getUniqueValues = (array1: arrayType, array2: arrayType): arrayType => {
-
   const uniqueArray: arrayType = [];
   const findUnique = (array: arrayType): void => {
     for (let i = 0; i < array.length; i++) {
